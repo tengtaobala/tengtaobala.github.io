@@ -1,0 +1,321 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"><head> 
+<title>颜色进制转换</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Language" content="zh-CN"> 
+
+
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+
+<link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=tool.oschina.net" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=tool.oschina.net"></script><style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+@keyframes caretBlink {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+}
+
+@keyframes rotateSpinner {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+#text-tool-caret {
+    animation-name: caretBlink;  
+    animation-iteration-count: infinite;  
+    animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    animation-duration: 1s; 
+}
+
+#en-markup-loading-spinner {
+    position: absolute;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+    width: 32px;
+    height: 32px;
+}
+
+#en-markup-loading-spinner img {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation-name: rotateSpinner;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+</style><style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+.skitchToastBoxContainer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    pointer-events: none;
+}
+
+.skitchToastBox {
+    width: 200px;
+    height: 16px;
+    padding: 12px;
+    background-color: rgba(47, 55, 61, 0.95);
+    border-radius: 4px;
+    color: white;
+    cursor: default;
+    font-size: 10pt;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.32);
+    font-family: 'Soleil', Helvetica, Arial, sans-serif;
+    border: 2px rgba(255, 255, 255, 0.38) solid;
+}
+
+.lang-zh-cn .skitchToastBox {
+    font-family: '微软雅黑', 'Microsoft YaHei', SimSun,
+        '&#x30E1;&#x30A4;&#x30EA;&#x30AA;', Meiryo, 'MS PGothic', 'Soleil',
+        Helvetica, Arial, sans-serif;
+}
+
+.lang-ja-jp .skitchToastBox {
+    font-family: '&#x30E1;&#x30A4;&#x30EA;&#x30AA;', Meiryo, 'MS PGothic',
+        '微软雅黑', 'Microsoft YaHei', SimSun, 'Soleil', Helvetica, Arial,
+        sans-serif;
+}
+
+.skitchToast {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    height: 10px;
+    color: #f1f5f8;
+    text-align: center;
+}
+
+.skitchVisible {
+    /* Don't remove this class it's a hack used by the Evernote Clipper */
+}
+</style><style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+
+ 
+</style><style type="text/css">/* Copyright 2019-present Evernote Corporation. All rights reserved. */
+
+#en-markup-disabled {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    cursor: default;
+    -webkit-user-select: none;
+}
+
+#en-markup-alert-container {
+    position: absolute;
+    z-index: 9999;
+    width: 450px;
+    left: calc(50% - 225px);
+    top: calc(50% - 85px);
+    background-color: white;
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,0.35);
+    -webkit-user-select: none;
+}
+
+ 
+#en-markup-alert-container .cell-2 {
+    position: relative;
+    float: left;
+    width: 345px;
+    margin-top: 29px;
+    margin-bottom: 20px;
+}
+
+#en-markup-alert-container .cell-2 .cell-2-title {
+    margin-bottom: 5px;
+    padding-right: 30px;
+    font-size: 12pt;
+    font-family: Tahoma, Arial;
+}
+
+#en-markup-alert-container .cell-2 .cell-2-message {
+    padding-right: 30px;
+    font-size: 9.5pt;
+    font-family: Tahoma, Arial;
+}
+
+#en-markup-alert-container .cell-3 {
+    position: relative;
+    width: 450px;
+    height: 60px;
+    float: left;
+    background-color: rgb(240,240,240);
+}
+
+#en-markup-alert-container .cell-3 button {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 110px;
+    height: 36px;
+}
+
+#en-markup-alert-container .cell-3 button.alt-button {
+    position: absolute;
+    top: 12px;
+    right: 140px;
+    width: 110px;
+    height: 36px;
+}
+</style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; }
+[touch-action~="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }
+[touch-action~="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }
+[touch-action~="pan-up"]{ -ms-touch-action: pan-up; touch-action: pan-up; }
+[touch-action~="pan-down"]{ -ms-touch-action: pan-down; touch-action: pan-down; }
+[touch-action~="pan-left"]{ -ms-touch-action: pan-left; touch-action: pan-left; }
+[touch-action~="pan-right"]{ -ms-touch-action: pan-right; touch-action: pan-right; }
+</style></head>
+<body>
+	<!--     头部header开始    -->
+<div id="header">
+	<div class="wrapper">
+		<div id="mainSearch">
+										
+				<!-- Put the following javascript before the closing </head> tag. -->
+<style>
+.go_search {width: 300px;}
+.go_search .gsc-input td,.go_search .gsc-input tddiv {padding:0 0 0 0;margin:0 0 0 0;height:23px;}
+.go_search .gsc-input input:focus{ 
+border:none;
+
+}
+.go_search .gsc-input input {
+	border:none;
+	height:23px;
+	width: 100%;
+	padding: 0px;
+	border: none;
+	margin: 0px;
+	height: auto;
+	outline: none;
+	-webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+	background-image: url(../img/google_custom_search_watermark.gif?20140625);
+	background-color: rgb(255, 255, 255);
+	background-position: 0% 50%;
+	background-repeat: no-repeat no-repeat;
+}
+</style>
+
+<div class="go_search">
+<!-- Place this tag where you want the search box to render -->
+</div>
+		</div>
+		<div id="logo" class="texthidden" onclick="javascript:location.href='/'">
+		 
+		</div>
+	</div>
+</div>
+<!--     头部header结束    -->
+ 
+	<style>
+.tool_content{width:1024px;margin-left:auto;margin-right:auto;margin-top:15px;margin-bottom:25px;}
+.tool_content h1 {margin:10px 0 30px 0; font-size:12pt;}
+.tool_content ul li{width:80px;height:30px;display:inline-block;}
+.hex_num{width:24px;}
+.num_value{width:550px;}
+.content_area{margin:20px 0 20px 0;}
+</style>
+<div id="mainContent" class="tool_content wrapper">
+	<div class="toolName">在线进制转换</div>
+	<div style="margin:10px 0 10px 0;"><a data-toggle="modal" href="#advice" style="float:right;text-decoration:none;"><span class="badge badge-important"><i class="icon-envelope icon-white"></i> </span></a></div>
+	<table>
+		<tbody><tr><td>
+			<div class="content_area" id="input_area">
+			<ul>
+				<li><label class="radio"><input type="radio" name="input_" value="10" checked="checked">10进制</label></li>
+				
+			</ul>
+			<div class="input-prepend">
+			<span class="add-on">转换数字</span>
+            <input id="input_value" type="text" value="" onpropertychange="px()" onchange="px()" oninput="px()" class="toolInput num_value" placeholder="在此输入0~100的数字"></input>
+			</div>
+			</div>
+			</td>
+		</tr>
+		<tr><td>
+			<div class="content_area" id="output_area">
+			<ul>
+				<li><label class="radio"><input type="radio" name="output_" value="16" checked="checked">16进制</label></li>
+				
+			</ul>
+			<div class="input-prepend">
+			<span class="add-on">转换结果</span><input type="text" id="output_value" class="toolInput num_value" placeholder="转换结果">
+			</div>
+			</div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('[name="input_"]').click(function (){
+		$('#input_num').val($(this).val());
+		$('#input_value').val("");
+		$('#output_value').val("");
+	});
+	$('[name="output_"]').click(function (){
+		$('#output_num').val($(this).val());
+		px();
+	});
+	$("#input_num").change(function(){
+		$("#input_area input").removeAttr("checked");
+		var val = $(this).val();
+		$("#input_area input[value="+val+"]").attr("checked","checked");
+		$('#input_value').val("");
+		$('#output_value').val("");
+	});
+
+
+    $("#input_value").change(function () {
+        
+  
+    })
+});
+function pxparseFloat(x,y){
+	x=x.toString();
+	var num=x;
+	var data=num.split(".");
+	var you=data[1].split(""); //将右边转换为数组 得到类似 [1,0,1]
+	var sum=0;  //小数部分的和
+	for(var i=0;i<data[1].length;i++){
+		sum+=you[i]*Math.pow(y,-1*(i+1))
+	}
+	return parseInt(data[0],y)+sum;
+}
+
+
+
+function px(argument) {
+        var number = $("#input_value").val();
+        if (number<0 || number>100) {
+            $("#output_value").val("请输入0~100的数字")
+        }else{
+            var array = [number * 255 /100];
+            var newArray = array.map(item=>{
+                return item.toString(16);
+            });
+
+            $("#output_value").val(newArray[0].split(".")[0])
+        }
+}
+</script>
+	 
+
+
+
+
+</body>
+</html>
