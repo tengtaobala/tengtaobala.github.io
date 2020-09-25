@@ -48,9 +48,13 @@ $(function () {
     }
 	
 	var beg=$('.begin');
-    beg.click(function(){
-        $(this).hide();
-        $('audio')[0].play();
-        feiru();
-    });
+    // beg.click(function(){
+    //     $(this).hide();
+    //     $('audio')[0].play();
+    //     feiru();
+    // });
+
+    $(this).hide();
+    $('audio')[0].play();
+    feiru();
 })
